@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.application');
 });
+
+Route::get('application', [\App\Http\Controllers\ApplicationController::class, 'showForm'])->name('application');
 
 Route::middleware([
     'auth:sanctum',
