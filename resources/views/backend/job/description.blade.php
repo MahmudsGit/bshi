@@ -10,7 +10,7 @@
                                 <div class="nk-block-head-sub"><a class="back-to" href="html/components.html"><em class="icon ni ni-arrow-left"></em><span>Components</span></a></div>
                                 <h3 class="nk-block-title fw-normal">Job Description</h3>
                                 <div class="nk-block-des">
-                                    <p class="lead">Select Jobs to assign Job Description, Write Job Description Below</p>
+                                    <p class="lead">Please Write Job Description Below and Select Jobs to assign Job Description</p>
                                 </div>
                             </div>
                         </div><!-- .nk-block-head -->
@@ -23,7 +23,7 @@
                                     <div class="row gy-4">
                                         <div class="col-12">
                                             <div class="preview-block">
-                                                <span class="preview-title overline-title">All Jobs</span>
+                                                <span class="preview-title overline-title">Select Jobs</span>
 
                                                 <div class="g-3 align-center flex-wrap">
                                                     <div class="g">
