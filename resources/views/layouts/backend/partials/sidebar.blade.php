@@ -30,18 +30,10 @@
                         <h6 class="overline-title text-primary-alt">Applications</h6>
                     </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                        <a href="{{ route('job.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
                             <span class="nk-menu-text">Jobs</span>
                         </a>
-                        <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
-                                <a href="{{ route('job.create') }}" class="nk-menu-link"><span class="nk-menu-text">Create Job</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="{{ route('job.index') }}" class="nk-menu-link"><span class="nk-menu-text">Job List</span></a>
-                            </li>
-                        </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item has-sub">
                         <a href="{{ route('description') }}" class="nk-menu-link ">

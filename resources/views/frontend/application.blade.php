@@ -19,26 +19,15 @@
         </nav>
     </div>
     <div class="container">
-        <form action="{{ route('application') }}" method="get" data-parsley-validate class="form-horizontal form-label-left">
+        <form action="{{ route('form') }}" method="get" data-parsley-validate class="form-horizontal form-label-left">
             @csrf
-
             <div class="text-center">
+                @foreach($jobs as $job)
                 <div class="form-check">
-                    <input  type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                    <label class="form-check-label" for="flexRadioDefault1">সিনিয়র ষ্টাফ নার্স</label>
+                    <input  type="radio" value="{{ $job->id }}" name="flexRadioDefault" id="{{ $job->id }}" >
+                    <label class="form-check-label" for="{{ $job->id }}">{{ $job->job_name }}</label>
                 </div>
-                <div class="form-check">
-                    <input  type="radio" value="2" name="flexRadioDefault" id="flexRadioDefault2" >
-                    <label class="form-check-label" for="flexRadioDefault2">নার্স</label>
-                </div>
-                <div class="form-check">
-                    <input  type="radio" value="3" name="flexRadioDefault" id="flexRadioDefault3" >
-                    <label class="form-check-label" for="flexRadioDefault3">ষ্টাফ নার্স</label>
-                </div>
-                <div class="form-check">
-                    <input  type="radio" value="4" name="flexRadioDefault" id="flexRadioDefault4" >
-                    <label class="form-check-label" for="flexRadioDefault4">জুনিয়র ষ্টাফ নার্স</label>
-                </div>
+                @endforeach
             </div>
             <div class="fa-pull-right">
                 <input class="btn btn-sm btn-outline-secondary" type="submit" name="submit" value="Next">

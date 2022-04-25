@@ -7,25 +7,32 @@
                     <div class="components-preview wide-md mx-auto">
                         <div class="nk-block-head nk-block-head-lg wide-sm">
                             <div class="nk-block-head-content">
-                                <div class="nk-block-head-sub"><a class="back-to" href="#"><em class="icon ni ni-arrow-left"></em><span>Back</span></a></div>
-                                <h3 class="nk-block-title fw-normal">New Job Post</h3>
+                                <div class="nk-block-head-sub"><a class="back-to" href="{{ route('job.index') }}"><em class="icon ni ni-arrow-left"></em><span>Back</span></a></div>
+                                <h3 class="nk-block-title page-title">New Job Post</h3>
                                 <div class="nk-block-des">
-                                    <p class="lead">To Create a Job Please Fill the Form below...</p>
+                                    <p class="sub">To Create a Job Please Fill the Form below...</p>
                                 </div>
                             </div>
                         </div><!-- .nk-block -->
+                        @if(session('alert-green'))
+                            <div class="alert alert-success mt-3 text-center">
+                                {{ session('alert-green') }}
+                            </div>
+                        @endif
                         <div class="nk-block nk-block-lg">
                             <div class="card">
                                 <div class="card-inner">
                                     <div class="card-head">
                                         <h5 class="card-title">Create a Job</h5>
                                     </div>
-                                    <form action="#" class="gy-3">
+                                    <form action="{{ route('job.store') }}" method="post" class="gy-3">
+                                        @csrf
                                         <div class="row g-3 align-center">
                                             <div class="col-lg-5">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="site-name">Job Name</label>
+                                                    <label class="form-label" for="job_name">Job Name</label>
                                                     <span class="form-note">Specify the name of Job.</span>
+                                                    @error('job_name')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-7">
@@ -41,6 +48,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="open_date">Open Date</label>
                                                     <span class="form-note">Specify the Open Date of Job.</span>
+                                                    @error('job_name')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-7">
@@ -57,6 +65,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="expired_date">Expired Date</label>
                                                     <span class="form-note">Specify the Expired Date of Job.</span>
+                                                    @error('expired_date')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-7">
@@ -73,6 +82,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="minimum_age">Minimum Age</label>
                                                     <span class="form-note">Specify the Minimum Age of Job.</span>
+                                                    @error('minimum_age')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-7">
@@ -90,6 +100,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="maximum_age">Maximum Age</label>
                                                     <span class="form-note">Specify the Maximum Age of Job.</span>
+                                                    @error('maximum_age')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-7">
@@ -107,6 +118,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="quota_age">Quota Age</label>
                                                     <span class="form-note">Specify the Quota Age of Job.</span>
+                                                    @error('quota_age')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-7">
@@ -124,6 +136,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="registration_fee">Registration Fee</label>
                                                     <span class="form-note">Specify the Registration Fee of Job.</span>
+                                                    @error('registration_fee')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-7">

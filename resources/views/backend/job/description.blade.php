@@ -7,7 +7,7 @@
                     <div class="components-preview wide-md mx-auto">
                         <div class="nk-block-head nk-block-head-lg wide-sm">
                             <div class="nk-block-head-content">
-                                <div class="nk-block-head-sub"><a class="back-to" href="html/components.html"><em class="icon ni ni-arrow-left"></em><span>Components</span></a></div>
+                                <div class="nk-block-head-sub"><a class="back-to" href="html/components.html"><em class="icon ni ni-arrow-left"></em><span>back</span></a></div>
                                 <h3 class="nk-block-title fw-normal">Job Description</h3>
                                 <div class="nk-block-des">
                                     <p class="lead">Please Write Job Description Below and Select Jobs to assign Job Description</p>
@@ -26,18 +26,14 @@
                                                 <span class="preview-title overline-title">Select Jobs</span>
 
                                                 <div class="g-3 align-center flex-wrap">
+                                                    @foreach($jobs as $job)
                                                     <div class="g">
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="sr_nurse">
-                                                            <label class="custom-control-label" for="sr_nurse">sr nurse</label>
+                                                            <input type="checkbox" class="custom-control-input" id="{{ $job->id }}">
+                                                            <label class="custom-control-label" for="{{ $job->id }}side">{{ $job->job_name }}</label>
                                                         </div>
                                                     </div>
-                                                    <div class="g">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="jr_nurse">
-                                                            <label class="custom-control-label" for="jr_nurse">jr nurse</label>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>

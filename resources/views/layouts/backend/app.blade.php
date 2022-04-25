@@ -41,6 +41,7 @@
 <!-- JavaScript -->
 <script src="{{ asset('backend_assets/assets/js/bundle.js?ver=2.9.1') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/scripts.js?ver=2.9.1') }}"></script>
+<script src="{{ asset('backend_assets/assets/js/example-toastr.js?ver=2.9.1') }}"></script>
 @stack('js')
 </body>
 
