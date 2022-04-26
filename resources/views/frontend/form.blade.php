@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form_content">
-                        <form action="">
+                        <form action="{{ route('apply') }}" method="post">
+                            @csrf
                             <ul>
                                 <!-- 1.1 -->
                                 <li class="form_item">
@@ -86,31 +87,31 @@
                                         <div class="age">
                                             <div class="age_item first">
                                                 <div class="lavel_age age_applycation">
-                                                    <label for="birth_date_day">বয়স (আবেদনের তারিখ অনুযায়ী)</label> <span> : </span>
+                                                    <label for="age_day">বয়স (আবেদনের তারিখ অনুযায়ী)</label> <span> : </span>
                                                 </div>
                                                 <div class="input_age">
-                                                    <input type="text" name="birth_date_day" id="birth_date_day">
+                                                    <input type="text" name="age_day" id="age_day">
                                                 </div>
                                             </div>
                                             <div class="age_item">
                                                 <div class="lavel_age">
-                                                    <label for="birth_date_day">দিন</label>
+                                                    <label for="age_day">দিন</label>
                                                 </div>
                                                 <div class="input_age">
-                                                    <input type="text" name="birth_date_month" id="birth_date_month">
+                                                    <input type="text" name="age_month" id="age_month">
                                                 </div>
                                             </div>
                                             <div class="age_item">
                                                 <div class="lavel_age">
-                                                    <label for="birth_date_month">মাস</label>
+                                                    <label for="age_month">মাস</label>
                                                 </div>
                                                 <div class="input_age">
-                                                    <input type="text" name="birth_date_year" id="birth_date_year">
+                                                    <input type="text" name="age_year" id="age_year">
                                                 </div>
                                             </div>
                                             <div class="age_item">
                                                 <div class="lavel_age">
-                                                    <label for="birth_date_year">বছর</label>
+                                                    <label for="age_year">বছর</label>
                                                 </div>
                                             </div>
                                         </div>
