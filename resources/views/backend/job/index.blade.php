@@ -87,8 +87,14 @@
                                                     <div class="dropdown-menu dropdown-menu-right">
                                                         <ul class="link-list-opt no-bdr">
                                                             <li><a href="{{ route('description') }}"><em class="icon ni ni-bar-c"></em><span>Update Description</span></a></li>
-                                                            <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Selected</span></a></li>
-                                                            <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Selected</span></a></li>
+                                                            <li><a href="{{ route('job.edit',$job->id) }}"><em class="icon ni ni-edit"></em><span>Edit Selected</span></a></li>
+                                                            <li>
+                                                                <a style="cursor: pointer;" onclick="deletejob({{ $job->id }})"> <em class="icon ni ni-trash"></em><span>Remove Selected</span></a>
+                                                                <form id="delete-form-{{$job->id}}" action="{{ route('job.destroy',$job->id) }}" method="post">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                </form>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -106,3 +112,48 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{ asset('backend_assets/js/sweetalert2.js') }}"></script>
+    <script type="text/javascript">
+        function deletejob(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it !',
+                cancelButtonText: 'No, cancel !',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.preventDefault();
+                    document.getElementById('delete-form-'+id).submit();
+
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your file is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
+@endpush

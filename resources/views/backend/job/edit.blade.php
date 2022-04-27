@@ -8,9 +8,9 @@
                         <div class="nk-block-head nk-block-head-sm">
                             <div class="nk-block-between">
                                 <div class="nk-block-head-content">
-                                    <h3 class="nk-block-title page-title">New Job Post</h3>
+                                    <h3 class="nk-block-title page-title">Edit Job Post</h3>
                                     <div class="nk-block-des text-soft">
-                                        <p class="sub">To Create a Job Please Fill the Form below...</p>
+                                        <p class="sub">To Edit a Job Please Update the Form below...</p>
                                     </div>
                                 </div><!-- .nk-block-head-content -->
                                 @if(session('alert-green'))
@@ -25,10 +25,11 @@
                             <div class="card">
                                 <div class="card-inner">
                                     <div class="card-head">
-                                        <h5 class="card-title">Create a Job</h5>
+                                        <h5 class="card-title">update Job</h5>
                                     </div>
-                                    <form action="{{ route('job.store') }}" method="post" class="gy-3">
+                                    <form action="{{ route('job.update',$job->id) }}" method="post" class="gy-3">
                                         @csrf
+                                        @method('put')
                                         <div class="row g-3 align-center">
                                             <div class="col-lg-5">
                                                 <div class="form-group">
@@ -40,7 +41,7 @@
                                             <div class="col-lg-7">
                                                 <div class="form-group">
                                                     <div class="form-control-wrap">
-                                                        <input type="text" class="form-control" name="job_name" id="job_name"  value="">
+                                                        <input type="text" class="form-control" name="job_name" id="job_name"  value="{{ $job->job_name }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -56,7 +57,7 @@
                                             <div class="col-lg-7">
                                                 <div class="form-group">
                                                     <div class="form-control-wrap">
-                                                        <input type="text" id="open_date" name="open_date" class="form-control date-picker">
+                                                        <input type="text" id="open_date" name="open_date" class="form-control date-picker" value="{{ Carbon\Carbon::parse($job->open_date)->format('d/m/Y') }}">
                                                     </div>
                                                     <div class="form-note">Date format <code>mm/dd/yyyy</code></div>
                                                 </div>
@@ -73,7 +74,7 @@
                                             <div class="col-lg-7">
                                                 <div class="form-group">
                                                     <div class="form-control-wrap">
-                                                        <input type="text" id="expired_date" name="expired_date" class="form-control date-picker">
+                                                        <input type="text" id="expired_date" name="expired_date" class="form-control date-picker" value="{{ Carbon\Carbon::parse($job->expired_date)->format('d/m/Y') }}">
                                                     </div>
                                                     <div class="form-note">Date format <code>mm/dd/yyyy</code></div>
                                                 </div>
@@ -91,7 +92,7 @@
                                                 <div class="form-group">
                                                     <div class="form-control-wrap number-spinner-wrap">
                                                         <a class="btn btn-icon btn-outline-light number-spinner-btn number-minus" data-number="minus"><em class="icon ni ni-minus"></em></a>
-                                                        <input type="number" id="minimum_age" name="minimum_age" class="form-control number-spinner" value="" >
+                                                        <input type="number" id="minimum_age" name="minimum_age" class="form-control number-spinner" value="{{ $job->minimum_age }}" >
                                                         <a class="btn btn-icon btn-outline-light number-spinner-btn number-plus" data-number="plus"><em class="icon ni ni-plus"></em></a>
                                                     </div>
                                                 </div>
@@ -109,7 +110,7 @@
                                                 <div class="form-group">
                                                     <div class="form-control-wrap number-spinner-wrap">
                                                         <a class="btn btn-icon btn-outline-light number-spinner-btn number-minus" data-number="minus"><em class="icon ni ni-minus"></em></a>
-                                                        <input type="number" id="maximum_age" name="maximum_age" class="form-control number-spinner" value="" >
+                                                        <input type="number" id="maximum_age" name="maximum_age" class="form-control number-spinner" value="{{ $job->maximum_age }}" >
                                                         <a class="btn btn-icon btn-outline-light number-spinner-btn number-plus" data-number="plus"><em class="icon ni ni-plus"></em></a>
                                                     </div>
                                                 </div>
@@ -127,7 +128,7 @@
                                                 <div class="form-group">
                                                     <div class="form-control-wrap number-spinner-wrap">
                                                         <a class="btn btn-icon btn-outline-light number-spinner-btn number-minus" data-number="minus"><em class="icon ni ni-minus"></em></a>
-                                                        <input type="number" id="quota_age" name="quota_age" class="form-control number-spinner" value="">
+                                                        <input type="number" id="quota_age" name="quota_age" class="form-control number-spinner" value="{{ $job->quota_age }}">
                                                         <a class="btn btn-icon btn-outline-light number-spinner-btn number-plus" data-number="plus"><em class="icon ni ni-plus"></em></a>
                                                     </div>
                                                 </div>
@@ -144,7 +145,7 @@
                                             <div class="col-lg-7">
                                                 <div class="form-group">
                                                     <div class="form-control-wrap">
-                                                        <input type="text" class="form-control" name="registration_fee" id="registration_fee"  value="">
+                                                        <input type="text" class="form-control" name="registration_fee" id="registration_fee"  value="{{ $job->registration_fee }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,7 +153,7 @@
                                         <div class="row g-3">
                                             <div class="col-lg-7 offset-lg-5">
                                                 <div class="form-group mt-2">
-                                                    <input type="submit" class="btn btn-lg btn-primary" value="Save">
+                                                    <input type="submit" class="btn btn-lg btn-primary" value="Update">
                                                 </div>
                                             </div>
                                         </div>

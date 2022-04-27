@@ -80,7 +80,8 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = Job::find($id);
+        return view('backend.job.edit',compact('job'));
     }
 
     /**
@@ -92,7 +93,27 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'job_name' =>'required',
+            'open_date' =>'required',
+            'expired_date' =>'required|',
+            'minimum_age' =>'required|integer',
+            'maximum_age' =>'required|integer',
+            'quota_age' =>'required|integer',
+            'registration_fee' =>'required',
+        ]);
+
+        $job = Job::find($id);
+        $job->job_name = $request->job_name;
+        $job->open_date =Carbon::createFromFormat('m/d/Y', $request->open_date)->format('Y/m/d');
+        $job->expired_date = Carbon::createFromFormat('m/d/Y', $request->expired_date)->format('Y/m/d');
+        $job->minimum_age = $request->minimum_age;
+        $job->maximum_age = $request->maximum_age;
+        $job->quota_age = $request->quota_age;
+        $job->registration_fee = $request->registration_fee;
+        $job->save();
+
+        return redirect()->route('job.edit',$id)->with('alert-green', 'Job Update Successfully');
     }
 
     /**
@@ -107,6 +128,8 @@ class JobController extends Controller
     }
     public function destroy($id)
     {
-        //
+        $job = Job::find($id);
+        $job->delete();
+        return redirect()->back()->with('alert-green', 'Job Delete Successfully');
     }
 }

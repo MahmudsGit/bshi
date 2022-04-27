@@ -30,7 +30,7 @@
                                                     <div class="g">
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input" id="{{ $job->id }}">
-                                                            <label class="custom-control-label" for="{{ $job->id }}side">{{ $job->job_name }}</label>
+                                                            <label class="custom-control-label" for="{{ $job->id }}">{{ $job->job_name }}</label>
                                                         </div>
                                                     </div>
                                                     @endforeach

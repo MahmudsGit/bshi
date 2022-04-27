@@ -82,12 +82,12 @@
                                     </div>
                                     <div class="input birth">
                                         <div class="input">
-                                            <input type="text" name="birth_date" id="birth_date">
+                                            <input type="date" name="birth_date" id="birth_date">
                                         </div>
                                         <div class="age">
                                             <div class="age_item first">
                                                 <div class="lavel_age age_applycation">
-                                                    <label for="age_day">বয়স (আবেদনের তারিখ অনুযায়ী)</label> <span> : </span>
+                                                    <label for="age_day"> &nbsp;বয়স (আবেদনের তারিখ অনুযায়ী)</label> <span> : </span>
                                                 </div>
                                                 <div class="input_age">
                                                     <input type="text" name="age_day" id="age_day">
@@ -382,7 +382,7 @@
                                         <label for="reg_number"> ৪.১ বাংলাদেশ নাসিং ও মিডয়োইফাইরি কাউন্সিলের রেজিস্ট্রেশেন নম্বর:</label>
                                         <input type="text" name="reg_number" id="reg_number">
                                         <label for="reg_date"> তারিখ:</label>
-                                        <input type="text" name="reg_date" id="reg_date">
+                                        <input type="date" name="reg_date" id="reg_date">
                                     </div>
                                 </li>
                                 <!-- 5.0 -->
@@ -432,8 +432,8 @@
                                         <br>
                                         <label for="bank_branch"> শাখার নাম:</label>
                                         <input type="text" name="bank_branch" id="bank_branch" class="brunch">
-                                        <label for="bank_draft_date"> তারিখ:</label>
-                                        <input type="text" name="bank_draft_date" id="bank_draft_date" id="bank_draft_date" class="dates">
+                                        <label for="bank_draft_date "> তারিখ:</label>
+                                        <input type="date" name="bank_draft_date" id="bank_draft_date" id="bank_draft_date" class="dates">
                                     </div>
                                 </li>
                             </ul>
