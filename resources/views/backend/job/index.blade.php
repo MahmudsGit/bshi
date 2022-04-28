@@ -86,7 +86,7 @@
                                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
                                                         <ul class="link-list-opt no-bdr">
-                                                            <li><a href="{{ route('description') }}"><em class="icon ni ni-bar-c"></em><span>Update Description</span></a></li>
+                                                            <li><a href="{{ route('description.create') }}"><em class="icon ni ni-bar-c"></em><span>Update Description</span></a></li>
                                                             <li><a href="{{ route('job.edit',$job->id) }}"><em class="icon ni ni-edit"></em><span>Edit Selected</span></a></li>
                                                             <li>
                                                                 <a style="cursor: pointer;" onclick="deletejob({{ $job->id }})"> <em class="icon ni ni-trash"></em><span>Remove Selected</span></a>

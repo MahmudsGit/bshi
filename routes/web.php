@@ -23,5 +23,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/dashboard', function () {return view('backend.dashboard');})->name('dashboard');
 
     Route::resource('job','\App\Http\Controllers\job\JobController');
-    Route::get('/description/job', [\App\Http\Controllers\job\JobController::class, 'description'])->name('description');
+    Route::resource('description','\App\Http\Controllers\job\DescriptionController');
 });

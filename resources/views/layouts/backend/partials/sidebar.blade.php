@@ -17,10 +17,15 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     <li class="nk-menu-heading">
+                        <h6 class="overline-title text-primary-alt">
+                            <a href="{{ route('application') }}" target="_blank" class="nk-menu-link">Visit Site</a>
+                        </h6>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Dashboards</h6>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="#" class="nk-menu-link">
+                        <a href="{{route('dashboard')}}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-book-read"></em></span>
                             <span class="nk-menu-text">Dashboard</span>
                         </a>
@@ -36,8 +41,8 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item has-sub">
-                        <a href="{{ route('description') }}" class="nk-menu-link ">
-                            <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                        <a href="{{ route('description.index') }}" class="nk-menu-link ">
+                            <span class="nk-menu-icon"><em class="icon ni ni-archive"></em></span>
                             <span class="nk-menu-text">Job Description</span>
                         </a>
                     </li><!-- .nk-menu-item -->

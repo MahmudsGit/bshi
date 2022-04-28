@@ -122,10 +122,7 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function description (){
-        $jobs = Job::all();
-        return view('backend.job.description',compact('jobs'));
-    }
+
     public function destroy($id)
     {
         $job = Job::find($id);

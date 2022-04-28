@@ -13,4 +13,9 @@ class JobDescription extends Model
       'job_id',
       'description',
     ];
+
+    public function job()
+    {
+        return $this->belongsToMany(Job::class);
+    }
 }

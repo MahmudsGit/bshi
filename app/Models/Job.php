@@ -18,4 +18,9 @@ class Job extends Model
         'quota_age',
         'registration_fee',
     ];
+
+    public function jobDescription()
+    {
+        return $this->hasOne(jobDescription::class);
+    }
 }
