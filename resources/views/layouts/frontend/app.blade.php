@@ -28,12 +28,12 @@ START Form PART
 <div class="" style="margin-bottom: 200px;"></div>
 
 <!-- JS Link -->
-<script src="{{ asset('frontend_assets/js/jquery-1.12.4.min.js') }}"></script>
+
+<script src="{{ asset('frontend_assets/js/jquery-3.5.0.min.js') }}"></script>
 <script src="{{ asset('frontend_assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('frontend_assets/js/slick.min.js') }}"></script>
 <script src="{{ asset('frontend_assets/js/all.min.js') }}"></script>
 <script src="{{ asset('frontend_assets/js/slick.min.js') }}"></script>
-<script src="{{ asset('frontend_assets/js/custom.js') }}"></script>
 
 @stack('js')
 </body>

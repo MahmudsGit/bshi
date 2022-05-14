@@ -41,12 +41,6 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item has-sub">
-                        <a href="{{ route('description.index') }}" class="nk-menu-link ">
-                            <span class="nk-menu-icon"><em class="icon ni ni-archive"></em></span>
-                            <span class="nk-menu-text">Job Description</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                             <span class="nk-menu-text">Job Apply</span>

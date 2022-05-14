@@ -16,6 +16,6 @@ class JobDescription extends Model
 
     public function job()
     {
-        return $this->belongsToMany(Job::class);
+        return $this->belongsTo(Job::class);
     }
 }

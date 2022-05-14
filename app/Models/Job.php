@@ -21,6 +21,6 @@ class Job extends Model
 
     public function jobDescription()
     {
-        return $this->hasOne(jobDescription::class);
+        return $this->hasMany(jobDescription::class);
     }
 }

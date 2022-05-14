@@ -18,4 +18,8 @@ class JobApply extends Model
         'reviewed_by',
         'status',
     ];
+    public function Candidate()
+    {
+        return $this->hasOne(Candidate::class);
+    }
 }

@@ -45,5 +45,9 @@ class Candidate extends Model
             'bank_branch',
             'bank_draft_date',
     ];
+    public function JobApply()
+    {
+        return $this->belongsTo(JobApply::class);
+    }
 
 }

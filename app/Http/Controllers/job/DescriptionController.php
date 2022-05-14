@@ -16,8 +16,7 @@ class DescriptionController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
-        return view('backend.job.description.index',compact('jobs'));
+
     }
 
     /**
@@ -27,8 +26,6 @@ class DescriptionController extends Controller
      */
     public function create()
     {
-        $jobs = Job::all();
-        return view('backend.job.description.create',compact('jobs'));
 
     }
 
@@ -41,15 +38,19 @@ class DescriptionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-           'description'=>'required',
-           'job_id'=>'required',
+           'description[]'=>'required',
         ]);
-        $description = new JobDescription();
-        $description->description = $request->description;
-        $description->job_id = $request->job_id;
-        $description->save();
 
-        return redirect()->route('description.create')->with('alert-green', 'description Create Successfully');
+        $allDescription = $request->description;
+        $job_id = $request->job_id;
+
+        for ($i=0; $i<count($allDescription); $i++){
+            $description = new JobDescription();
+            $description->description = $allDescription[$i];
+            $description->job_id = $job_id[$i];
+            $description->save();
+        }
+        return redirect()->back()->with('alert-green', 'description Create Successfully');
 
     }
 
@@ -72,8 +73,9 @@ class DescriptionController extends Controller
      */
     public function edit($id)
     {
-        $jobs = Job::all();
-        return view('backend.job.description.edit',compact('jobs'));
+        $jobDescriptions = JobDescription::where('job_id', $id)->get();
+        $job = Job::find($id);
+        return view('backend.job.description.edit',compact('job','jobDescriptions'));
     }
 
     /**

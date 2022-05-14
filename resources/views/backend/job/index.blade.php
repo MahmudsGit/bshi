@@ -74,10 +74,10 @@
                                         <span class="tb-lead">{{ $job->minimum_age.'-'.$job->maximum_age.', '.$job->quota_age }}</span>
                                     </td>
                                     <td class="nk-tb-col tb-col-md">
-                                        <span class="tb-lead">{{ $job->registration_fee }}</span>
+                                        <span class="tb-lead">{{ $job->registration_fee }} TK.</span>
                                     </td>
                                     <td class="nk-tb-col tb-col-md">
-                                        <span class="tb-lead">{{ $job->registration_fee }} Tk</span>
+                                        <a href="{{ route('description.edit',$job->id) }}"><em class="icon ni ni-edit-alt"></em><span>Edit Description</span></a>
                                     </td>
                                     <td class="nk-tb-col nk-tb-col-tools">
                                         <ul class="nk-tb-actions gx-1 my-n1">
@@ -86,7 +86,6 @@
                                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
                                                         <ul class="link-list-opt no-bdr">
-                                                            <li><a href="{{ route('description.create') }}"><em class="icon ni ni-bar-c"></em><span>Update Description</span></a></li>
                                                             <li><a href="{{ route('job.edit',$job->id) }}"><em class="icon ni ni-edit"></em><span>Edit Selected</span></a></li>
                                                             <li>
                                                                 <a style="cursor: pointer;" onclick="deletejob({{ $job->id }})"> <em class="icon ni ni-trash"></em><span>Remove Selected</span></a>

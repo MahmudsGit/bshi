@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {return view('frontend.application');} );
 
 Route::get('/', [\App\Http\Controllers\ApplicationController::class, 'application'])->name('application');
-Route::get('form', [\App\Http\Controllers\ApplicationController::class, 'showForm'])->name('form');
+
+Route::get('application/form/{id}', [\App\Http\Controllers\ApplicationController::class, 'showForm'])->name('form');
+
 Route::post('apply', [\App\Http\Controllers\ApplicationController::class, 'store'])->name('apply');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {

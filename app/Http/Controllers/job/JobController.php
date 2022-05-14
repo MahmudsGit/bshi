@@ -50,7 +50,7 @@ class JobController extends Controller
 
         $job = new Job();
         $job->job_name = $request->job_name;
-        $job->open_date =Carbon::createFromFormat('m/d/Y', $request->open_date)->format('Y/m/d');
+        $job->open_date = Carbon::createFromFormat('m/d/Y', $request->open_date)->format('Y/m/d');
         $job->expired_date = Carbon::createFromFormat('m/d/Y', $request->expired_date)->format('Y/m/d');
         $job->minimum_age = $request->minimum_age;
         $job->maximum_age = $request->maximum_age;
