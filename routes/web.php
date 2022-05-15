@@ -20,6 +20,7 @@ Route::get('/', [\App\Http\Controllers\ApplicationController::class, 'applicatio
 Route::get('application/form/{id}', [\App\Http\Controllers\ApplicationController::class, 'showForm'])->name('form');
 
 Route::post('apply', [\App\Http\Controllers\ApplicationController::class, 'store'])->name('apply');
+Route::get('confirmation/{id}', [\App\Http\Controllers\ApplicationController::class, 'confirmation'])->name('confirmation');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {return view('backend.dashboard');})->name('dashboard');

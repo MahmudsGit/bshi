@@ -19,7 +19,7 @@
                                         <label for="full_name_bangla">১.১ পূর্ণ নাম স্পষ্ট অক্ষরে (বাংলায়)</label> <span> : </span>
                                     </div>
                                     <div class="input">
-                                        <input type="text" name="full_name_bangla" id="full_name_bangla">
+                                        <input type="text" name="full_name_bangla" id="full_name_bangla" value="{{ $candidate->full_name_bangla }}">
                                         <span class="text-danger error-text full_name_bangla_error"></span>
                                     </div>
                                 </li>
@@ -487,9 +487,9 @@
             </div>
         </div>
     </section>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
     <section id="form_part">
         <div class="container send">
             <div class="row">
@@ -504,10 +504,10 @@
                             </li>
                             @if(isset($job->jobDescription))
                                 @foreach($job->jobDescription as $description)
-                                <li>
-                                    {{ $description->id }} ) {!! $description->description !!}
-                                </li>
-                            @endforeach
+                                    <li>
+                                        {{ $description->id }} ) {!! $description->description !!}
+                                    </li>
+                                @endforeach
                             @endif
 
                         </ul>

@@ -19,13 +19,29 @@
         </nav>
     </div>
     <div class="container">
-            <div class="text-center">
-                @if(isset($jobs))
-                    @foreach($jobs as $job)
-                        <p><a class="nav-link" href="{{ route('form',$job->id) }}">{{ $job->job_name }}</a></p>
-                    @endforeach
-                @endif
-            </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col" width="10%">#SERIAL</th>
+                <th scope="col" width="70%">Position name</th>
+                <th scope="col" width="10%">Application</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if(isset($jobs))
+                @foreach($jobs as $job)
+            <tr>
+                <th scope="row">{{ $job->id }}</th>
+                <td>{{ $job->job_name }}</td>
+                <td>
+                    <a class="nav-link text-right" href="{{ route('form',$job->id) }}">Apply</a>
+                </td>
+            </tr>
+                @endforeach
+            @endif
+            </tbody>
+        </table>
+
     </div>
 @endsection
 
