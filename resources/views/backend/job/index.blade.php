@@ -77,7 +77,7 @@
                                         <span class="tb-lead">{{ $job->registration_fee }} TK.</span>
                                     </td>
                                     <td class="nk-tb-col tb-col-md">
-                                        <a href="{{ route('description.edit',$job->id) }}"><em class="icon ni ni-edit-alt"></em><span>Edit Description</span></a>
+                                        <a href="{{ route('description.view',$job->id) }}"><em class="icon ni ni-eye"></em><span>vew Description</span></a>
                                     </td>
                                     <td class="nk-tb-col nk-tb-col-tools">
                                         <ul class="nk-tb-actions gx-1 my-n1">

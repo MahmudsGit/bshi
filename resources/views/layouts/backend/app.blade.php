@@ -13,6 +13,7 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('backend_assets/assets/css/dashlite.css?ver=2.9.1') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('backend_assets/assets/css/theme.css?ver=2.9.1') }}">
+    @stack('css')
 </head>
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">

@@ -24,8 +24,17 @@ class DescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createNew($id)
     {
+        $jobDescriptions = JobDescription::where('job_id', $id)->get();
+        $job = Job::find($id);
+        return view('backend.job.description.create',compact('job','jobDescriptions'));
+    }
+    public function view($id)
+    {
+        $jobDescriptions = JobDescription::where('job_id', $id)->get();
+        $job = Job::find($id);
+        return view('backend.job.description.index',compact('job','jobDescriptions'));
 
     }
 
@@ -37,20 +46,23 @@ class DescriptionController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
-           'description[]'=>'required',
+           'description.*'=>'required',
         ]);
 
         $allDescription = $request->description;
-        $job_id = $request->job_id;
 
-        for ($i=0; $i<count($allDescription); $i++){
-            $description = new JobDescription();
-            $description->description = $allDescription[$i];
-            $description->job_id = $job_id[$i];
-            $description->save();
+        if ($allDescription){
+            for ($i=0; $i<count($allDescription); $i++){
+                $description = new JobDescription();
+                $description->description = $allDescription[$i];
+                $description->job_id = $request->job_id;
+                $description->save();
+            }
+            return redirect()->back()->with('alert-green', 'description Create Successfully');
         }
-        return redirect()->back()->with('alert-green', 'description Create Successfully');
+        return redirect()->back();
 
     }
 
@@ -73,9 +85,8 @@ class DescriptionController extends Controller
      */
     public function edit($id)
     {
-        $jobDescriptions = JobDescription::where('job_id', $id)->get();
-        $job = Job::find($id);
-        return view('backend.job.description.edit',compact('job','jobDescriptions'));
+        $jobDescriptions = JobDescription::find($id);
+        return view('backend.job.description.edit',compact('jobDescriptions'));
     }
 
     /**
@@ -85,9 +96,19 @@ class DescriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateDescription(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'description'=>'required',
+        ]);
+
+        $description = JobDescription::find($id);
+        $description->description = $request->description;
+        $description->job_id = $request->job_id;
+        $description->save();
+
+        return redirect()->back()->with('alert-green', 'description Update Successfully');
+
     }
 
     /**

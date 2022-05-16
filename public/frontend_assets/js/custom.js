@@ -20,7 +20,7 @@ $(function(){
                     });
                 }else{
                     $('#main_form')[0].reset();
-                    window.location=data.redirect_url+'/'+1;
+                    window.location=data.redirect_url+'/'+data.id;
                 }
             }
         });
