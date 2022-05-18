@@ -39,7 +39,8 @@
                                     <label for="position_name">১.২ পদের নামঃ</label> <span> : </span>
                                 </div>
                                 <div class="input">
-                                    <input type="text" name="position_name" id="position_name" value="@if($candidate){{ $candidate->position_name }}@endif">
+                                    <input type="text" name="position_name" id="position_name" value="@if($candidate){{ $candidate->position_name }}@endif" readonly>
+                                    <input type="hidden" name="job_id" id="job_id" value="@if($candidate){{ $candidate->job_id }}@endif" >
                                     <span class="text-danger error-text position_name_error"></span>
                                 </div>
                             </li>
@@ -291,37 +292,74 @@
                                 </div>
                             </li>
                             <!-- 1.9 -->
-                            <li class="form_item">
-                                <div class="lavel">
-                                    <label for="married"> ১.৯ বৈবাহিক  অবস্থাঃ </label> <span> : </span>
-                                </div>
-                                <div class="input cheakbox">
-                                    <select name="married" id="married">
-                                        <option value="0">বিবাহিত</option>
-                                        <option value="1">অবিবাহিত</option>
-                                    </select>
+                            <li class="form_item two_point_one">
+                                <div class="two_point_one_4_1">
+                                    <label for="reference_1"> ১.৯ অন্যান্য তথ্য </label>
                                 </div>
                             </li>
-                            <!-- 1.10 -->
-                            <li class="form_item">
-                                <div class="lavel">
-                                    <label for="religion"> ধর্ম </label> <span> : </span>
-                                </div>
-                                <div class="input">
-                                    <input type="text" name="religion" id="religion" value="@if($candidate){{ $candidate->religion }}@endif">
-                                    <span class="text-danger error-text religion_error"></span>
-                                </div>
-                            </li>
+                                <li class="form_item two_point_one five">
+                                    <div class="five_one">
+                                        <div class="five_one_item">
+                                            <div class="lavel">
+                                                <label for="married_status" class="en"> বৈবাহিক অবস্থা </label><span> : </span>
+                                            </div>
+                                            <div class="input cheakbox">
+                                                <select name="married_status" id="married_status">
+                                                    <option value="">-- বৈবাহিক অবস্থা নির্বাচন করুন --</option>
+                                                    <option value="married">অবিবাহিত</option>
+                                                    <option value="unmarried">বিবাহিত</option>
+                                                    <option value="others">অন্যান্য</option>
+                                                </select>
+                                                <span class="text-danger error-text married_status_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="five_one_item">
+                                            <div class="lavel">
+                                                <label for="nationality" class="en"> জাতীয়তা </label> <span> : </span>
+                                            </div>
+                                            <div class="input cheakbox">
+                                                <select name="nationality" id="nationality">
+                                                    <option value="">-- জাতীয়তা নির্বাচন করুন --</option>
+                                                    <option value="bangladeshi">বাংলাদেশী</option>
+                                                </select>
+                                                <span class="text-danger error-text nationality_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="five_one">
+                                        <div class="five_one_item">
+                                            <div class="lavel">
+                                                <label for="sex" class="en"> লিঙ্গ </label><span> : </span>
+                                            </div>
+                                            <div class="input cheakbox">
+                                                <select name="sex" id="sex">
+                                                    <option value="">-- লিঙ্গ নির্বাচন করুন --</option>
+                                                    <option value="male">পুরুষ</option>
+                                                    <option value="female">মহিলা</option>
+                                                    <option value="others">অন্যান্য</option>
+                                                </select>
+                                                <span class="text-danger error-text sex_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="five_one_item">
+                                            <div class="lavel">
+                                                <label for="religion" class="en"> ধর্ম </label> <span> : </span>
+                                            </div>
+                                            <div class="input cheakbox">
+                                                <select name="religion" id="religion">
+                                                    <option value="">-- ধর্ম নির্বাচন করুন --</option>
+                                                    <option value="islam">ইসলাম</option>
+                                                    <option value="hindu">হিন্দু</option>
+                                                    <option value="christian">খ্রীষ্টান</option>
+                                                    <option value="buddhism">বুদ্ধ</option>
+                                                    <option value="others">অন্যান্য</option>
+                                                </select>
+                                                <span class="text-danger error-text religion_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                             <!-- 2.0 -->
-                            <li class="form_item">
-                                <div class="lavel">
-                                    <label for="nationality"> নাগরিকত্ব </label> <span> : </span>
-                                </div>
-                                <div class="input">
-                                    <input type="text" name="nationality" id="nationality" value="@if($candidate){{ $candidate->nationality }}@endif">
-                                    <span class="text-danger error-text nationality_error"></span>
-                                </div>
-                            </li>
                             <!-- 2.1 -->
                             <li class="form_item two_point_one sorkari_besorkari">
                                 <div class="lavel">
@@ -460,23 +498,6 @@
                                 </div>
                             </li>
                             <!-- 6.0 -->
-                            <li class="form_item two_point_one six">
-                                <div class="two_point_one_4_1 f_two">
-                                    <label for="bank_draft_number">৬.০ পে-অর্ডার/ব্যাংক ড্রাফট নম্বর:</label>
-                                    <input type="text" name="bank_draft_number" id="bank_draft_number" class="pay_order" value="@if($candidate){{ $candidate->bank_draft_number }}@endif">
-                                    <span class="text-danger error-text bank_draft_number_error"></span>
-                                    <label for="bank_name"> ব্যাংকের নাম:</label>
-                                    <input type="text" name="bank_name" id="bank_name" class="bank_name" value="@if($candidate){{ $candidate->bank_name }}@endif">
-                                    <span class="text-danger error-text bank_name_error"></span>
-                                    <br>
-                                    <label for="bank_branch"> শাখার নাম:</label>
-                                    <input type="text" name="bank_branch" id="bank_branch" class="brunch" value="@if($candidate){{ $candidate->bank_branch }}@endif">
-                                    <span class="text-danger error-text bank_branch_error"></span>
-                                    <label for="bank_draft_date "> তারিখ:</label>
-                                    <input type="text" name="bank_draft_date" id="bank_draft_date" placeholder="YYYY/MM/DD" value="@if($candidate){{ $candidate->bank_draft_date }}@endif">
-                                    <span class="text-danger error-text bank_draft_date_error"></span>
-                                </div>
-                            </li>
                         </ul>
                         <div class="text-center">
                             <input type="submit" class="btn btn-lg btn-primary" value="Update Information">

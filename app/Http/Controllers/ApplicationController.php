@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\Job;
+use App\Models\JobApply;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Http\Request;
@@ -47,39 +48,16 @@ class ApplicationController extends Controller
             'contact_address_bangla'=>'required',
             'contact_address_english'=>'required',
             'moblie_number'=>'required',
-            'email'=>'required',
-            'married'=>'required',
-            'religion'=>'required',
+            'married_status'=>'required',
             'nationality'=>'required',
-            'employment'=>'required',
+            'religion'=>'required',
+            'sex'=>'required',
             'ssc_institute'=>'required',
             'ssc_board'=>'required',
             'ssc_grade'=>'required',
             'ssc_yaar'=>'required',
-            'hsc_institute'=>'required',
-            'hsc_board'=>'required',
-            'hsc_grade'=>'required',
-            'hsc_yaar'=>'required',
-            'diploma_institute'=>'required',
-            'diploma_board'=>'required',
-            'diploma_grade'=>'required',
-            'diploma_yaar'=>'required',
-            'bsc_institute'=>'required',
-            'bsc_board'=>'required',
-            'bsc_grade'=>'required',
-            'bsc_yaar'=>'required',
             'reg_number'=>'required',
             'reg_date'=>'required',
-            'reference_1_name'=>'required',
-            'reference_1_occupation'=>'required',
-            'reference_1_address'=>'required',
-            'reference_2_name'=>'required',
-            'reference_2_occupation'=>'required',
-            'reference_2_address'=>'required',
-            'bank_draft_number'=>'required',
-            'bank_name'=>'required',
-            'bank_branch'=>'required',
-            'bank_draft_date'=>'required',
         ]);
 
         if(!$validator->passes()){
@@ -148,6 +126,7 @@ class ApplicationController extends Controller
             $candidate->full_name_bangla = $request->full_name_bangla;
             $candidate->full_name_english = $request->full_name_english;
             $candidate->position_name = $request->position_name;
+            $candidate->job_id = $request->job_id;
             $candidate->clo_name_bangla = $request->clo_name_bangla;
             $candidate->clo_name_english = $request->clo_name_english;
             $candidate->mother_name_bangla = $request->mother_name_bangla;
@@ -161,9 +140,10 @@ class ApplicationController extends Controller
             $candidate->contact_address_english = $request->contact_address_english;
             $candidate->moblie_number = $request->moblie_number;
             $candidate->email = $request->email;
-            $candidate->married = $request->married;
-            $candidate->religion = $request->religion;
+            $candidate->married_status = $request->married_status;
             $candidate->nationality = $request->nationality;
+            $candidate->religion = $request->religion;
+            $candidate->sex = $request->sex;
             $candidate->employment = $request->employment;
             $candidate->ssc = $ssc;
             $candidate->hsc =$hsc;
@@ -175,14 +155,22 @@ class ApplicationController extends Controller
             $candidate->reg_date = date("Y-m-d", strtotime($request->reg_date));
             $candidate->reference_1 = $reference_1;
             $candidate->reference_2 = $reference_2;
-            $candidate->bank_draft_number = $request->bank_draft_number;
-            $candidate->bank_name = $request->bank_name;
-            $candidate->bank_branch = $request->bank_branch;
-            $candidate->bank_draft_date = date("Y-m-d", strtotime($request->bank_draft_date));
             $query = $candidate->save();
+
             if( $query ){
+                $jobApply = new JobApply();
+                $jobApply->applied_by = $candidate->id;
+                $jobApply->job_id = $candidate->job_id;
+                $jobApply->identification_number = $candidate->id;
+                $jobApply->identification_password = $candidate->id;
+                $jobApply->payment_status = 0;
+                $jobApply->reviewed_by = 1;
+                $jobApply->status = 'applied';
+                $jobApply->save();
+
                 return response()->json(['status'=>1, 'id'=>$candidate->id, 'redirect_url'=>url('confirmation')]);
             }
+
         }
     }
 
@@ -212,38 +200,16 @@ class ApplicationController extends Controller
             'contact_address_bangla'=>'required',
             'contact_address_english'=>'required',
             'moblie_number'=>'required',
-            'married'=>'required',
-            'religion'=>'required',
+            'married_status'=>'required',
             'nationality'=>'required',
-            'employment'=>'required',
+            'religion'=>'required',
+            'sex'=>'required',
             'ssc_institute'=>'required',
             'ssc_board'=>'required',
             'ssc_grade'=>'required',
             'ssc_yaar'=>'required',
-            'hsc_institute'=>'required',
-            'hsc_board'=>'required',
-            'hsc_grade'=>'required',
-            'hsc_yaar'=>'required',
-            'diploma_institute'=>'required',
-            'diploma_board'=>'required',
-            'diploma_grade'=>'required',
-            'diploma_yaar'=>'required',
-            'bsc_institute'=>'required',
-            'bsc_board'=>'required',
-            'bsc_grade'=>'required',
-            'bsc_yaar'=>'required',
             'reg_number'=>'required',
             'reg_date'=>'required',
-            'reference_1_name'=>'required',
-            'reference_1_occupation'=>'required',
-            'reference_1_address'=>'required',
-            'reference_2_name'=>'required',
-            'reference_2_occupation'=>'required',
-            'reference_2_address'=>'required',
-            'bank_draft_number'=>'required',
-            'bank_name'=>'required',
-            'bank_branch'=>'required',
-            'bank_draft_date'=>'required',
         ]);
 
         if(!$validator->passes()){
@@ -312,6 +278,7 @@ class ApplicationController extends Controller
             $candidate->full_name_bangla = $request->full_name_bangla;
             $candidate->full_name_english = $request->full_name_english;
             $candidate->position_name = $request->position_name;
+            $candidate->job_id = $request->job_id;
             $candidate->clo_name_bangla = $request->clo_name_bangla;
             $candidate->clo_name_english = $request->clo_name_english;
             $candidate->mother_name_bangla = $request->mother_name_bangla;
@@ -325,9 +292,10 @@ class ApplicationController extends Controller
             $candidate->contact_address_english = $request->contact_address_english;
             $candidate->moblie_number = $request->moblie_number;
             $candidate->email = $request->email;
-            $candidate->married = $request->married;
-            $candidate->religion = $request->religion;
+            $candidate->married_status = $request->married_status;
             $candidate->nationality = $request->nationality;
+            $candidate->religion = $request->religion;
+            $candidate->sex = $request->sex;
             $candidate->employment = $request->employment;
             $candidate->ssc = $ssc;
             $candidate->hsc =$hsc;
@@ -339,14 +307,12 @@ class ApplicationController extends Controller
             $candidate->reg_date = date("Y-m-d", strtotime($request->reg_date));
             $candidate->reference_1 = $reference_1;
             $candidate->reference_2 = $reference_2;
-            $candidate->bank_draft_number = $request->bank_draft_number;
-            $candidate->bank_name = $request->bank_name;
-            $candidate->bank_branch = $request->bank_branch;
-            $candidate->bank_draft_date = date("Y-m-d", strtotime($request->bank_draft_date));
             $query = $candidate->save();
             if( $query ){
-                return response()->json(['status'=>1, 'id'=>1, 'redirect_url'=>url('confirmation')]);
+                return response()->json(['status'=>1, 'id'=>$candidate->id, 'redirect_url'=>url('confirmation')]);
             }
+
+
         }
     }
     public function confirmation($id){

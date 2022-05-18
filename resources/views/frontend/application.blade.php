@@ -34,7 +34,7 @@
                 <th scope="row">{{ $job->id }}</th>
                 <td>{{ $job->job_name }}</td>
                 <td>
-                    <a class="nav-link text-right" href="{{ route('form',$job->id) }}">Apply</a>
+                    <a class="btn btn-sm btn-outline-secondary text-center" href="{{ route('form',$job->id) }}">Apply</a>
                 </td>
             </tr>
                 @endforeach

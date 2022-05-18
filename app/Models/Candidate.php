@@ -13,6 +13,7 @@ class Candidate extends Model
             'full_name_bangla',
             'full_name_english',
             'position_name',
+            'job_id',
             'clo_name_bangla',
             'clo_name_english',
             'mother_name_bangla',
@@ -26,9 +27,10 @@ class Candidate extends Model
             'contact_address_english',
             'moblie_number',
             'email',
-            'married',
+            'married_status',
             'religion',
             'nationality',
+            'sex',
             'employment',
             'ssc',
             'hsc',
@@ -40,10 +42,6 @@ class Candidate extends Model
             'reg_date',
             'reference_1',
             'reference_2',
-            'bank_draft_number',
-            'bank_name',
-            'bank_branch',
-            'bank_draft_date',
     ];
     public function JobApply()
     {

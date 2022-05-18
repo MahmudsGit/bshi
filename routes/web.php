@@ -22,7 +22,7 @@ Route::get('application/form/{id}', [\App\Http\Controllers\ApplicationController
 Route::post('apply', [\App\Http\Controllers\ApplicationController::class, 'store'])->name('apply');
 Route::get('confirmation/{id}', [\App\Http\Controllers\ApplicationController::class, 'confirmation'])->name('confirmation');
 Route::get('application/edit/{id}', [\App\Http\Controllers\ApplicationController::class, 'edit'])->name('edit');
-Route::post('application/update/{id}', [\App\Http\Controllers\ApplicationController::class, 'edit'])->name('update');
+Route::post('application/update/{id}', [\App\Http\Controllers\ApplicationController::class, 'update'])->name('update');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {return view('backend.dashboard');})->name('dashboard');
