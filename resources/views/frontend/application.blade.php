@@ -29,12 +29,13 @@
             </thead>
             <tbody>
             @if(isset($jobs))
+                <?php $i = 1 ?>
                 @foreach($jobs as $job)
             <tr>
-                <th scope="row">{{ $job->id }}</th>
+                <th scope="row">{{ $i++ }}</th>
                 <td>{{ $job->job_name }}</td>
                 <td>
-                    <a class="btn btn-sm btn-outline-secondary text-center" href="{{ route('form',$job->id) }}">Apply</a>
+                    <a class="btn btn-sm btn-outline-secondary " href="{{ route('form',$job->id) }}">Apply Now !</a>
                 </td>
             </tr>
                 @endforeach

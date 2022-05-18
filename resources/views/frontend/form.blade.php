@@ -307,7 +307,7 @@
                                             </div>
                                             <div class="input cheakbox">
                                                 <select name="married_status" id="married_status">
-                                                    <option value="">-- বৈবাহিক অবস্থা নির্বাচন করুন --</option>
+                                                    <option value="">-- বৈবাহিক নির্বাচন করুন --</option>
                                                     <option value="married">অবিবাহিত</option>
                                                     <option value="unmarried">বিবাহিত</option>
                                                     <option value="others">অন্যান্য</option>
@@ -526,9 +526,12 @@
                                 </div>
                             </li>
                             @if(isset($job->jobDescription))
+                                <?php
+                                    $i = 1;
+                                ?>
                                 @foreach($job->jobDescription as $description)
                                 <li>
-                                    {{ $description->id }} ) {!! $description->description !!}
+                                    {!! $i++ .' ) '. $description->description !!}
                                 </li>
                             @endforeach
                             @endif

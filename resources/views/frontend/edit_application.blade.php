@@ -305,10 +305,10 @@
                                             </div>
                                             <div class="input cheakbox">
                                                 <select name="married_status" id="married_status">
-                                                    <option value="">-- বৈবাহিক অবস্থা নির্বাচন করুন --</option>
-                                                    <option value="married">অবিবাহিত</option>
-                                                    <option value="unmarried">বিবাহিত</option>
-                                                    <option value="others">অন্যান্য</option>
+                                                    <option value="">-- বৈবাহিক নির্বাচন করুন --</option>
+                                                    <option value="married" {{ $candidate->married_status=="married" ? "selected" : "" }}>অবিবাহিত</option>
+                                                    <option value="unmarried" {{ $candidate->married_status=="unmarried" ? "selected" : "" }}>বিবাহিত</option>
+                                                    <option value="others" {{ $candidate->married_status=="others" ? "selected" : "" }}>অন্যান্য</option>
                                                 </select>
                                                 <span class="text-danger error-text married_status_error"></span>
                                             </div>
@@ -320,7 +320,7 @@
                                             <div class="input cheakbox">
                                                 <select name="nationality" id="nationality">
                                                     <option value="">-- জাতীয়তা নির্বাচন করুন --</option>
-                                                    <option value="bangladeshi">বাংলাদেশী</option>
+                                                    <option value="bangladeshi" {{ $candidate->nationality=="bangladeshi" ? "selected" : "" }}>বাংলাদেশী</option>
                                                 </select>
                                                 <span class="text-danger error-text nationality_error"></span>
                                             </div>
@@ -334,9 +334,9 @@
                                             <div class="input cheakbox">
                                                 <select name="sex" id="sex">
                                                     <option value="">-- লিঙ্গ নির্বাচন করুন --</option>
-                                                    <option value="male">পুরুষ</option>
-                                                    <option value="female">মহিলা</option>
-                                                    <option value="others">অন্যান্য</option>
+                                                    <option value="male" {{ $candidate->sex=="male" ? "selected" : "" }}>পুরুষ</option>
+                                                    <option value="female" {{ $candidate->sex=="female" ? "selected" : "" }}>মহিলা</option>
+                                                    <option value="others" {{ $candidate->sex=="others" ? "selected" : "" }}>অন্যান্য</option>
                                                 </select>
                                                 <span class="text-danger error-text sex_error"></span>
                                             </div>
@@ -348,11 +348,11 @@
                                             <div class="input cheakbox">
                                                 <select name="religion" id="religion">
                                                     <option value="">-- ধর্ম নির্বাচন করুন --</option>
-                                                    <option value="islam">ইসলাম</option>
-                                                    <option value="hindu">হিন্দু</option>
-                                                    <option value="christian">খ্রীষ্টান</option>
-                                                    <option value="buddhism">বুদ্ধ</option>
-                                                    <option value="others">অন্যান্য</option>
+                                                    <option value="islam" {{ $candidate->religion=="islam" ? "selected" : "" }}>ইসলাম</option>
+                                                    <option value="hindu" {{ $candidate->religion=="hindu" ? "selected" : "" }}>হিন্দু</option>
+                                                    <option value="christian" {{ $candidate->religion=="christian" ? "selected" : "" }}>খ্রীষ্টান</option>
+                                                    <option value="buddhism" {{ $candidate->religion=="buddhism" ? "selected" : "" }}>বুদ্ধ</option>
+                                                    <option value="others" {{ $candidate->religion=="others" ? "selected" : "" }}>অন্যান্য</option>
                                                 </select>
                                                 <span class="text-danger error-text religion_error"></span>
                                             </div>
