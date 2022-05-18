@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="input birth">
                                         <div class="input form-group date" id="datepicker">
-                                            <input type="text" name="birth_date" id = "DOB" onmouseleave="ageCalculator()" placeholder="YYYY/MM/DD">
+                                            <input type="text" name="birth_date" id = "DOB" onchange="ageCalculator()" placeholder="YYYY/MM/DD">
                                             <span class="text-danger error-text birth_date_error" id="messege"></span>
                                         </div>
                                         <div class="age">

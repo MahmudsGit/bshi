@@ -119,6 +119,8 @@ class DescriptionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jobDescription = JobDescription::find($id);
+        $jobDescription->delete();
+        return redirect()->back()->with('alert-green', 'Job Description Delete Successfully');
     }
 }

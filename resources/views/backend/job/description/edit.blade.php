@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('backend_assets/assets/css/editors/tinymce.css?ver=2.9.1') }}">
+    <link rel="stylesheet" href="{{ asset('backend_assets/assets/css/editors/summernote.css?ver=2.9.1') }}">
 @endpush
 @section('content')
     <div class="nk-content ">
@@ -49,7 +49,7 @@
                                     <tr class="nk-tb-item">
                                         <td class="nk-tb-col" colspan="2">
                                             @error('description')<span class="form-note text-danger">* {{ $message }}</span>@enderror
-                                            <textarea class="tinymce-basic form-control" name="description" >{{ $jobDescriptions->description }}</textarea>
+                                            <textarea class="summernote-basic form-control" name="description" >{{ $jobDescriptions->description }}</textarea>
                                             <input type="hidden" name="job_id" value="{{ $jobDescriptions->job_id }}">
                                         </td>
                                     </tr><!-- .nk-tb-item -->
@@ -66,23 +66,6 @@
     </div>
 @endsection
 @push('js')
-    <script src="{{ asset('backend_assets/assets/js/libs/editors/tinymce.js?ver=2.9.1') }}"></script>
+    <script src="{{ asset('backend_assets/assets/js/libs/editors/summernote.js?ver=2.9.1') }}"></script>
     <script src="{{ asset('backend_assets/assets/js/editors.js?ver=2.9.1') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var html= '<tr class="nk-tb-item"><td class="nk-tb-col" colspan="2">@error('description[]')<span class="form-note text-danger">* {{ $message }}</span>@enderror<div class="row g-4"><div class="col-12"><div class="form-control-wrap"><div class="input-group"><textarea class="tinymce-basic form-control" name="description[]" aria-label="With textarea"></textarea><div class="input-group-prepend"><span class="input-group-text"><button class="btn btn-outline-danger btn-dim" id="remove"><em class="icon ni ni-delete"></em></button></span> </div></div></div></div></div></td></tr>';
-            var x =1;
-            var max =10;
-            $("#add").click(function () {
-                if (x<=max){
-                    $("#table_field").append(html);
-                    x++;
-                }
-            })
-            $("#table_field").on('click', '#remove', function () {
-                $(this).closest('tr').remove();
-                x--;
-            })
-        });
-    </script>
 @endpush

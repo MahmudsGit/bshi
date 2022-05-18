@@ -491,7 +491,13 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="text-center">
-                        <a href="#" class="btn btn-lg btn-success">Apply <span class="text-soft">(Pay Now)</span></a>
+
+                        <button class="your-button-class" id="sslczPayBtn"
+                                token="if you have any token validation"
+                                postdata="your javascript arrays or objects which requires in backend"
+                                order="If you already have the transaction generated for current order"
+                                endpoint="/pay-via-ajax"> Apply <span class="text-soft">(Pay Now)</span>
+                        </button>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -507,4 +513,15 @@
 @endsection
 @push('js')
 <script src="{{ asset('frontend_assets/js/custom.js') }}"></script>
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+            tag.parentNode.insertBefore(script, tag);
+        };
+
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
 @endpush

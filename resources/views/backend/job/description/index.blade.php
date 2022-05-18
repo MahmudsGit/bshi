@@ -45,7 +45,7 @@
                                 <table class="nk-tb-list is-separate nk-tb-ulist" id="table_field">
                                     <tbody>
                                     <tr class="nk-tb-item">
-                                        <td>
+                                        <td class="" >
                                             @error('description')<span class="form-note text-danger">* {{ $message }}</span>@enderror
                                             <input type="hidden" name="job_id" value="{{ $job->id }}">
                                         </td>
@@ -108,7 +108,13 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li><a href="{{ route('description.edit',$jobDescription->id) }}"><em class="icon ni ni-edit"></em><span>Edit Description</span></a></li>
-                                                                <li><a href="#"><em class="icon ni ni-delete"></em><span>Delete Description</span></a></li>
+                                                                <li>
+                                                                    <a style="cursor: pointer;" onclick="deletejobDescription({{ $jobDescription->id }})"> <em class="icon ni ni-trash"></em><span>Remove Selected</span></a>
+                                                                    <form id="delete-form-{{$jobDescription->id}}" action="{{ route('description.destroy',$jobDescription->id) }}" method="post">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                    </form>
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -130,7 +136,7 @@
     <script src="{{ asset('backend_assets/assets/js/editors.js?ver=2.9.1') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var html= '<tr class="nk-tb-item"><td class="nk-tb-col" >@error('description[]')<span class="form-note text-danger">* {{ $message }}</span>@enderror<div class="row g-4"><div class="col-12"><div class="form-control-wrap"><div class="input-group"><input type="text" class="form-control" name="description[]" ><div class="input-group-prepend"><button class="btn btn-outline-danger btn-dim" id="remove"><em class="icon ni ni-delete"></em></button></div></div></div></div></div></td></tr>';
+            var html= '<tr class="nk-tb-item"><td class="nk-tb-col" >@error('description[]')<span class="form-note text-danger">* {{ $message }}</span>@enderror<div class="row g-4"><div class="col-12"><div class="form-control-wrap"><div class="input-group"><textarea id="mytextarea" class="mytextarea form-control" name="description[]" ></textarea><div class="input-group-prepend"><button class="btn btn-outline-danger btn-dim" id="remove"><em class="icon ni ni-delete"></em></button></div></div></div></div></div></td></tr>';
             var sbtn ='<input type="submit" id="sbtn" class="btn btn-primary btn-block" value="Save All Description">';
             var x =1;
             var min =2;
@@ -151,5 +157,48 @@
 
             })
         });
+    </script>
+    <script src="{{ asset('backend_assets/js/sweetalert2.js') }}"></script>
+    <script type="text/javascript">
+        function deletejobDescription(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it !',
+                cancelButtonText: 'No, cancel !',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.preventDefault();
+                    document.getElementById('delete-form-'+id).submit();
+
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your file is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
     </script>
 @endpush

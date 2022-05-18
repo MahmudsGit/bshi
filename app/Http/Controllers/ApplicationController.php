@@ -212,7 +212,6 @@ class ApplicationController extends Controller
             'contact_address_bangla'=>'required',
             'contact_address_english'=>'required',
             'moblie_number'=>'required',
-            'email'=>'required',
             'married'=>'required',
             'religion'=>'required',
             'nationality'=>'required',

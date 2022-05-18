@@ -33,3 +33,17 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('description/view/{id}', [\App\Http\Controllers\job\DescriptionController::class, 'view'])->name('description.view');
     Route::post('description/update/{id}', [\App\Http\Controllers\job\DescriptionController::class, 'updateDescription'])->name('description.updateDescription');
 });
+
+// SSLCOMMERZ Start
+Route::get('/example1', [\App\Http\Controllers\SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [\App\Http\Controllers\SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [\App\Http\Controllers\SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [\App\Http\Controllers\SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [\App\Http\Controllers\SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [\App\Http\Controllers\SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [\App\Http\Controllers\SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [\App\Http\Controllers\SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END

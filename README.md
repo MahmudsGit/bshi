@@ -1,61 +1,112 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+### SSLCommerz - Laravel Library
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+```
+For any technical support, please email at <integration@sslcommerz.com>
+```
 
-## About Laravel
+__Tags:__ Payment Gateway, SSLCommerz, IPN
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+__Requires:__  Laravel >= 5.6 and MySQL
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+__License:__ GPLv2 or later
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+#### Core Library Directory Structure
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+ |-- config/
+    |-- sslcommerz.php
+ |-- app/Library/SslCommerz
+    |-- AbstractSslCommerz.php (core file)
+    |-- SslCommerzInterface.php (core file)
+    |-- SslCommerzNotification.php (core file)
+ |-- README.md
+ |-- orders.sql (sample)
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Instructions:
 
-## Laravel Sponsors
+* __Step 1:__ Download and extract the library files.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+* __Step 2:__ Copy the `Library` folder and put it in the laravel project's `app/` directory. If needed, then run `composer dump -o`.
 
-### Premium Partners
+* __Step 3:__ Copy the `config/sslcommerz.php` file into your project's `config/` folder.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+Now, we have already copied the core library files. Let's do copy some other helpers files that is provided to understand the integration process. The other files are not related to core library. 
 
-## Contributing
+* __Optional:__ If you later encounter issues with session destroying after redirect, you can set ```'same_site' => null,``` in your `config/session.php` file.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* __Step 4:__ Add `STORE_ID` and `STORE_PASSWORD` values on your project's `.env` file. You can register for a store at [https://developer.sslcommerz.com/registration/](https://developer.sslcommerz.com/registration/)
 
-## Code of Conduct
+* __Step 5:__ Copy the `SslCommerzPaymentController` into your project's `Controllers` folder.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* __Step 6:__ Copy the defined routes from `routes/web.php` into your project's route file.
 
-## Security Vulnerabilities
+* __Step 7:__ Add the below routes into the `$excepts` array of `VerifyCsrfToken` middleware.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+protected $except = [
+    '/pay-via-ajax', '/success','/cancel','/fail','/ipn'
+];
+```
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* __Step 8:__ Copy the `resources/views/*.blade.php` files into your project's `resources/views/` folder.
+
+
+Now, let's go to the main integration part. 
+* __Step 9:__ To integrate popup checkout, use the below script before the end of body tag.
+
+##### For Sandbox
+```
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+            tag.parentNode.insertBefore(script, tag);
+        };
+
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+```
+
+##### For Live
+```
+<script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://seamless-epay.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+            tag.parentNode.insertBefore(script, tag);
+        };
+    
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+```
+
+* __Step 10:__ Use the below button where you want to show the **"Pay Now"** button:
+
+```
+<button class="your-button-class" id="sslczPayBtn"
+        token="if you have any token validation"
+        postdata="your javascript arrays or objects which requires in backend"
+        order="If you already have the transaction generated for current order"
+        endpoint="/pay-via-ajax"> Pay Now
+</button>
+```
+
+* __Step 11:__ For EasyCheckout (Popup) integration, you can update the `checkout_ajax.php` or use a different file according to your need. We have provided a basic sample page from where you can kickstart the payment gateway integration.
+
+* __Step 12:__ For Hosted Checkout integration, you can update the `checkout_hosted.php` or use a different file according to your need. We have provided a basic sample page from where you can kickstart the payment gateway integration.
+
+* __Step 13:__ For redirecting action from SSLCommerz Payment gateway, we have also provided sample `success.php`, `cancel.php`, `fail.php`files. You can update those files according to your need.
+
+
+### Contributors
+> Md. Rakibul Islam
+
+> Prabal Mallick
+
