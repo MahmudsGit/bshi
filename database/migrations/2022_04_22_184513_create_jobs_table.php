@@ -21,7 +21,7 @@ class CreateJobsTable extends Migration
             $table->integer('minimum_age')->nullable();
             $table->integer('maximum_age')->nullable();
             $table->integer('quota_age')->nullable();
-            $table->decimal('registration_fee', 20, 4)->default(0);
+            $table->decimal('registration_fee', 20, 2)->default(0);
             $table->timestamps();
         });
     }

@@ -45,7 +45,11 @@ class Candidate extends Model
     ];
     public function JobApply()
     {
-        return $this->belongsTo(JobApply::class);
+        return $this->hasOne(JobApply::class);
+    }
+    public function Job()
+    {
+        return $this->belongsTo(Job::class);
     }
 
 }

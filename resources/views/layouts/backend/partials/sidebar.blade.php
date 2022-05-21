@@ -42,7 +42,7 @@
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item has-sub">
                         <a href="{{ route('description.index') }}" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-bullet-fill"></em></span>
                             <span class="nk-menu-text">Job Description</span>
                         </a>
                     </li><!-- .nk-menu-item -->
@@ -53,13 +53,13 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Applied Candidates</span></a>
+                                <a href="{{ route('candidate.index') }}" class="nk-menu-link"><span class="nk-menu-text">Applied Candidates</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Confirmed Candidates</span></a>
+                                <a href="{{ route('transaction') }}" class="nk-menu-link"><span class="nk-menu-text">Transactions</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Transactions</span></a>
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Admit Card</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->

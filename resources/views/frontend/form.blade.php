@@ -271,12 +271,12 @@
                                 <!-- 1.8 -->
                                 <li class="form_item">
                                     <div class="lavel">
-                                        <label for="moblie_number" class="en">টেলিফোন/মোবাইল নম্বর</label> <span> : </span>
+                                        <label for="mobile_number" class="en">টেলিফোন/মোবাইল নম্বর</label> <span> : </span>
                                     </div>
                                     <div class="input birth mobile">
                                         <div class="input">
-                                            <input type="text" name="moblie_number" id="moblie_number">
-                                            <span class="text-danger error-text moblie_number_error"></span>
+                                            <input type="text" name="mobile_number" id="mobile_number">
+                                            <span class="text-danger error-text mobile_number_error"></span>
                                         </div>
                                         <div class="age">
                                             <div class="age_item">
@@ -296,7 +296,7 @@
                                 <!-- 1.10 -->
                                 <li class="form_item two_point_one">
                                     <div class="two_point_one_4_1">
-                                        <label for="others_info"> ১.৯ অন্যান্য তথ্য </label>
+                                        <label for="others_info"> ১.৯ অন্যান্য তথ্য </label><span> : </span>
                                     </div>
                                 </li>
                                 <li class="form_item two_point_one five">
@@ -553,7 +553,6 @@
         $(document).ready(function(){
             var date_input1=$('input[name="birth_date"]'); //our date input has the name "date"
             var date_input2=$('input[name="reg_date"]'); //our date input has the name "date"
-            var date_input3=$('input[name="bank_draft_date"]'); //our date input has the name "date"
             var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
             var options={
                 format: 'yyyy/mm/dd',
@@ -563,7 +562,6 @@
             };
             date_input1.datepicker(options);
             date_input2.datepicker(options);
-            date_input3.datepicker(options);
         })
     </script>
 

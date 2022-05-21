@@ -10,7 +10,7 @@ class JobApply extends Model
     use HasFactory;
 
     protected $fillable =[
-        'applied_by',
+        'candidate_id',
         'job_id',
         'identification_number',
         'identification_password',
@@ -20,6 +20,6 @@ class JobApply extends Model
     ];
     public function Candidate()
     {
-        return $this->hasOne(Candidate::class);
+        return $this->belongsTo(Candidate::class);
     }
 }

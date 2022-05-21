@@ -30,7 +30,7 @@ class CreateCandidatesTable extends Migration
             $table->string('parmanet_address_english');
             $table->string('contact_address_bangla');
             $table->string('contact_address_english');
-            $table->integer('moblie_number');
+            $table->integer('mobile_number');
             $table->string('email')->nullable();
             $table->enum('married_status', ['married', 'unmarried', 'others']);
             $table->enum('sex', ['male', 'female', 'others']);

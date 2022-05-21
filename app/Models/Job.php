@@ -23,4 +23,8 @@ class Job extends Model
     {
         return $this->hasMany(jobDescription::class);
     }
+    public function Candidate()
+    {
+        return $this->hasMany(Candidate::class);
+    }
 }

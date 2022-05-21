@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Job;
 use App\Models\JobApply;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use function GuzzleHttp\Promise\all;
 
 class ApplicationController extends Controller
@@ -47,7 +46,7 @@ class ApplicationController extends Controller
             'district_english'=>'required',
             'contact_address_bangla'=>'required',
             'contact_address_english'=>'required',
-            'moblie_number'=>'required',
+            'mobile_number'=>'required',
             'married_status'=>'required',
             'nationality'=>'required',
             'religion'=>'required',
@@ -138,7 +137,7 @@ class ApplicationController extends Controller
             $candidate->parmanet_address_english =$parmanet_address_english;
             $candidate->contact_address_bangla = $request->contact_address_bangla;
             $candidate->contact_address_english = $request->contact_address_english;
-            $candidate->moblie_number = $request->moblie_number;
+            $candidate->mobile_number = $request->mobile_number;
             $candidate->email = $request->email;
             $candidate->married_status = $request->married_status;
             $candidate->nationality = $request->nationality;
@@ -159,10 +158,10 @@ class ApplicationController extends Controller
 
             if( $query ){
                 $jobApply = new JobApply();
-                $jobApply->applied_by = $candidate->id;
+                $jobApply->candidate_id = $candidate->id;
                 $jobApply->job_id = $candidate->job_id;
-                $jobApply->identification_number = $candidate->id;
-                $jobApply->identification_password = $candidate->id;
+                $jobApply->identification_number = 'BSH'.random_int(100000, 999999);
+                $jobApply->identification_password = random_int(100, 999).Str::random(4).random_int(100, 999);
                 $jobApply->payment_status = 0;
                 $jobApply->reviewed_by = 1;
                 $jobApply->status = 'applied';
@@ -199,7 +198,7 @@ class ApplicationController extends Controller
             'district_english'=>'required',
             'contact_address_bangla'=>'required',
             'contact_address_english'=>'required',
-            'moblie_number'=>'required',
+            'mobile_number'=>'required',
             'married_status'=>'required',
             'nationality'=>'required',
             'religion'=>'required',
@@ -290,7 +289,7 @@ class ApplicationController extends Controller
             $candidate->parmanet_address_english =$parmanet_address_english;
             $candidate->contact_address_bangla = $request->contact_address_bangla;
             $candidate->contact_address_english = $request->contact_address_english;
-            $candidate->moblie_number = $request->moblie_number;
+            $candidate->mobile_number = $request->mobile_number;
             $candidate->email = $request->email;
             $candidate->married_status = $request->married_status;
             $candidate->nationality = $request->nationality;
@@ -317,9 +316,24 @@ class ApplicationController extends Controller
     }
     public function confirmation($id){
         $candidate = Candidate::find($id);
+        session()->put('myId',$candidate->id);
         return view('frontend.confirmation',compact('candidate'));
 
     }
+    public function success(){
+        if (session()->has('myId')){
+            $id = session()->get('myId');
+        }
+        session()->forget('myId');
+        $candidate = Candidate::find($id);
+        return view('frontend.success',compact('candidate'));
+    }
+
+    public function pdf($id){
+        $candidate = Candidate::find($id);
+        return view('frontend.pdf',compact('candidate'));
+    }
+    
     public function edit($id){
         $candidate = Candidate::find($id);
         return view('frontend.edit_application',compact('candidate'));

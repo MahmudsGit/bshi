@@ -266,12 +266,12 @@
                             <!-- 1.8 -->
                             <li class="form_item">
                                 <div class="lavel">
-                                    <label for="moblie_number" class="en">টেলিফোন/মোবাইল নম্বর</label> <span> : </span>
+                                    <label for="mobile_number" class="en">টেলিফোন/মোবাইল নম্বর</label> <span> : </span>
                                 </div>
                                 <div class="input birth mobile">
                                     <div class="input">
-                                        <input readonly type="text" name="moblie_number" id="moblie_number" value="@if($candidate) {{ $candidate->moblie_number }} @endif">
-                                        <span class="text-danger error-text moblie_number_error"></span>
+                                        <input readonly type="text" name="mobile_number" id="mobile_number" value="@if($candidate) {{ $candidate->mobile_number }} @endif">
+                                        <span class="text-danger error-text mobile_number_error"></span>
                                     </div>
                                     <div class="age">
                                         <div class="age_item">
@@ -531,7 +531,6 @@
             </div>
         </div>
     </section>
-
 
 @endsection
 @push('js')

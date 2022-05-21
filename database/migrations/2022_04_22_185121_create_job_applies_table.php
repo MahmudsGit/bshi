@@ -15,7 +15,7 @@ class CreateJobAppliesTable extends Migration
     {
         Schema::create('job_applies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applied_by')->references('id')->on('candidates')->cascadeOnDelete();
+            $table->foreignId('candidate_id')->references('id')->on('candidates')->cascadeOnDelete();
             $table->foreignId('job_id')->references('id')->on('jobs')->cascadeOnDelete();
             $table->string('identification_number');
             $table->string('identification_password');
