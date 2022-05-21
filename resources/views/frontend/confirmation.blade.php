@@ -525,7 +525,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="text-center">
-                        <a href="#" class="btn btn-sm btn-secondary">Apply <span class="text-soft">(Pay Later)</span></a>
+                        <a href="{{ route('confirmation.success',$candidate->id) }}" class="btn btn-sm btn-secondary">Apply <span class="text-soft">(Pay Later)</span></a>
                     </div>
                 </div>
             </div>

@@ -23,8 +23,8 @@ Route::post('apply', [\App\Http\Controllers\ApplicationController::class, 'store
 Route::get('confirmation/{id}', [\App\Http\Controllers\ApplicationController::class, 'confirmation'])->name('confirmation');
 Route::get('application/edit/{id}', [\App\Http\Controllers\ApplicationController::class, 'edit'])->name('edit');
 Route::post('application/update/{id}', [\App\Http\Controllers\ApplicationController::class, 'update'])->name('update');
-Route::get('application/success', [\App\Http\Controllers\ApplicationController::class, 'success'])->name('confirmation.success');
-Route::post('download/pdf/{id}', [\App\Http\Controllers\ApplicationController::class, 'pdf'])->name('download.pdf');
+Route::get('application/success/{id}', [\App\Http\Controllers\ApplicationController::class, 'success'])->name('confirmation.success');
+Route::get('download/pdf/{id}', [\App\Http\Controllers\ApplicationController::class, 'pdf'])->name('download.pdf');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {return view('backend.dashboard');})->name('dashboard');

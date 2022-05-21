@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Job;
 use App\Models\JobApply;
+use App\Models\order;
+use PDF;
 use Illuminate\Support\Str;
 use Validator;
 use Illuminate\Http\Request;
@@ -314,30 +316,28 @@ class ApplicationController extends Controller
 
         }
     }
+
+    public function edit($id){
+        $candidate = Candidate::find($id);
+        return view('frontend.edit_application',compact('candidate'));
+    }
+
     public function confirmation($id){
         $candidate = Candidate::find($id);
         session()->put('myId',$candidate->id);
         return view('frontend.confirmation',compact('candidate'));
-
     }
-    public function success(){
-        if (session()->has('myId')){
-            $id = session()->get('myId');
-        }
-        session()->forget('myId');
+
+    public function success($id){
         $candidate = Candidate::find($id);
+
         return view('frontend.success',compact('candidate'));
     }
 
     public function pdf($id){
         $candidate = Candidate::find($id);
-        return view('frontend.pdf',compact('candidate'));
-    }
-    
-    public function edit($id){
-        $candidate = Candidate::find($id);
-        return view('frontend.edit_application',compact('candidate'));
-
+        $pdf = PDF::loadView('frontend.pdf',compact('candidate'))->setOptions(['defaultFont' => 'sans-serif']);;
+        return $pdf->download($candidate->JobApply->identification_number.'.pdf');
     }
 
 

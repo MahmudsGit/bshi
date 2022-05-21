@@ -5,25 +5,15 @@
 
 @section('content')
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Application Form <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Admit Card</a>
-                    </li>
-                </ul>
+        <div class="alert alert-icon alert-success" role="alert">
+            <em class="icon ni ni-alert-circle"></em>
+            Hi, <strong>{{ $candidate->full_name_english }}  </strong> User ID: <strong>{{ $candidate->JobApply->identification_number }}</strong> Your Application is Successful. Download Your Application Information bellow...
+            <br>
+            <br>
+            <div class="text-center">
+                <a href="{{ route('download.pdf',$candidate->id) }}" class="btn btn-outline-success" >Download Application Information</a>
             </div>
-        </nav>
-    </div>
-    <div class="container">
-        <h6>Your payment is Comlete</h6>
-        <p>Download Your Application Information </p>
-        <form method="post" action="{{ route('download.pdf') }}">
-            <input type="submit" value="Download Application Information">
-        </form>
+        </div>
     </div>
 @endsection
 
