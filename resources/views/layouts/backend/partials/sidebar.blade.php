@@ -17,23 +17,20 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">
-                            <a href="{{ route('application') }}" target="_blank" class="nk-menu-link">Visit Site</a>
-                        </h6>
+                        <a href="{{ route('application') }}" class="" target="_blank">
+                            <span class="nk-menu-icon"><em class="icon ni ni-home"></em></span>
+                            <h4 class="overline-title text-primary-alt">Visit Site</h4>
+                        </a><br>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Dashboards</h6>
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="{{route('dashboard')}}" class="nk-menu-link">
+                    <li class="nk-menu-item has-sub">
+                        <a href="{{route('dashboard') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-book-read"></em></span>
                             <span class="nk-menu-text">Dashboard</span>
                         </a>
                     </li><!-- .nk-menu-item -->
-
-                    <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Applications</h6>
-                    </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item has-sub">
                         <a href="{{ route('job.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
@@ -58,12 +55,14 @@
                             <li class="nk-menu-item">
                                 <a href="{{ route('transaction') }}" class="nk-menu-link"><span class="nk-menu-text">Transactions</span></a>
                             </li>
-                            <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Admit Card</span></a>
-                            </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
-
+                    <li class="nk-menu-item has-sub">
+                        <a href="{{ route('examination.index') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-calender-date"></em></span>
+                            <span class="nk-menu-text">Exam Date & Admit</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->

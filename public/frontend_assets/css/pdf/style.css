@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0;
+    clear: both;
+    color: #000000;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+/*---------------- Common Css ----------------*/
+.container{
+    width: 100%;
+    max-width: 80%;
+}
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------- 
+    START header PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+#header{
+    padding: 20px 0;
+}
+
+.header_content h2{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45px;
+}
+
+.header_content h3{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    font-style: italic;
+}
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------- 
+    START Applicant’s Information PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+#applicants{
+    margin-top: 60px;
+}
+
+.applicants_headers h3{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.col-lg-9 .applicants_headers{
+    text-align: center;
+}
+
+.table_part .form_part{
+    margin-top: 30px;
+}
+
+.table_part .form_part table th{
+    background: #CCCCCC;
+    font-size: 14px;
+    padding: 10px;
+    border-right: 2px solid #FFF;
+    border-bottom: 2px solid #FFF;
+}
+
+.table_part .form_part table td{
+    background: #CCCCCC;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-right: 2px solid #FFF;
+    border-bottom: 2px solid #FFF;
+}
+
+
+.table_part .form_part table th:last-child{
+    border-right: none;
+}
+
+.table_part .form_part table td:last-child{
+    border-right: none;
+}
+
+.Academic_Examination{
+    margin-top: 10px;
+}
+
+.Academic_Examination td{
+    text-align: center;
+}
+
+.Academic_Examination th{
+    text-align: center;
+}
+
+.Academic_Examination h3{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------- 
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------- 
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------- 
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------- 
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */

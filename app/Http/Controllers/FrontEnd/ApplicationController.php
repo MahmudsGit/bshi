@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FrontEnd;
 
+
+use App\Http\Controllers\Controller;
 use App\Models\Candidate;
 use App\Models\Job;
 use App\Models\JobApply;
@@ -14,14 +16,16 @@ use function GuzzleHttp\Promise\all;
 
 class ApplicationController extends Controller
 {
+
     public function application(){
         $jobs = Job::all();
         return view('frontend.application', compact('jobs'));
     }
 
+
     public function showForm($id){
         $job = Job::find($id);
-        return view('frontend.form',compact('job'));
+        return view('FrontEnd.application.form',compact('job'));
     }
 
     public function store(Request $request){
@@ -319,24 +323,24 @@ class ApplicationController extends Controller
 
     public function edit($id){
         $candidate = Candidate::find($id);
-        return view('frontend.edit_application',compact('candidate'));
+        return view('FrontEnd.application.edit_application',compact('candidate'));
     }
 
     public function confirmation($id){
         $candidate = Candidate::find($id);
         session()->put('myId',$candidate->id);
-        return view('frontend.confirmation',compact('candidate'));
+        return view('FrontEnd.application.confirmation',compact('candidate'));
     }
 
     public function success($id){
         $candidate = Candidate::find($id);
 
-        return view('frontend.success',compact('candidate'));
+        return view('FrontEnd.success',compact('candidate'));
     }
 
     public function pdf($id){
         $candidate = Candidate::find($id);
-        $pdf = PDF::loadView('frontend.pdf',compact('candidate'))->setOptions(['defaultFont' => 'sans-serif']);;
+        $pdf = PDF::loadView('FrontEnd.pdf.applicants_copy',compact('candidate'))->setOptions(['defaultFont' => 'sans-serif']);;
         return $pdf->download($candidate->JobApply->identification_number.'.pdf');
     }
 

@@ -27,4 +27,8 @@ class Job extends Model
     {
         return $this->hasMany(Candidate::class);
     }
+    public function Examination()
+    {
+        return $this->hasOne(Examination::class);
+    }
 }

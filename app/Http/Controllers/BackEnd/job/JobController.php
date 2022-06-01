@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\job;
+namespace App\Http\Controllers\BackEnd\job;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
@@ -17,7 +17,7 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::all();
-        return view('backend.job.index',compact('jobs'));
+        return view('BackEnd.job.index',compact('jobs'));
     }
 
     /**
@@ -27,7 +27,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('backend.job.create');
+        return view('BackEnd.job.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class JobController extends Controller
     public function edit($id)
     {
         $job = Job::find($id);
-        return view('backend.job.edit',compact('job'));
+        return view('BackEnd.job.edit',compact('job'));
     }
 
     /**

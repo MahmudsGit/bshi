@@ -10,6 +10,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form_content">
+                        <h5 class="text-center">চাকুরী আবেদন ফরমঃ
+                            <span class="bg-secondary text-light">@if(isset($job)){{ $job->job_name }} @endif</span>
+                        </h5><br>
                         <form action="{{ route('apply') }}" method="post" id="main_form">
                             @csrf
                             <ul>

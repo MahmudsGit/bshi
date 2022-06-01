@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\job;
+namespace App\Http\Controllers\BackEnd\job;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
@@ -17,7 +17,7 @@ class DescriptionController extends Controller
     public function index()
     {
         $jobs = Job::all();
-        return view('backend.job.description.description',compact('jobs'));
+        return view('BackEnd.job.description.description',compact('jobs'));
     }
 
     /**
@@ -29,13 +29,13 @@ class DescriptionController extends Controller
     {
         $jobDescriptions = JobDescription::where('job_id', $id)->get();
         $job = Job::find($id);
-        return view('backend.job.description.create',compact('job','jobDescriptions'));
+        return view('BackEnd.job.description.create',compact('job','jobDescriptions'));
     }
     public function view($id)
     {
         $jobDescriptions = JobDescription::where('job_id', $id)->get();
         $job = Job::find($id);
-        return view('backend.job.description.index',compact('job','jobDescriptions'));
+        return view('BackEnd.job.description.index',compact('job','jobDescriptions'));
 
     }
 
@@ -87,7 +87,7 @@ class DescriptionController extends Controller
     public function edit($id)
     {
         $jobDescriptions = JobDescription::find($id);
-        return view('backend.job.description.edit',compact('jobDescriptions'));
+        return view('BackEnd.job.description.edit',compact('jobDescriptions'));
     }
 
     /**

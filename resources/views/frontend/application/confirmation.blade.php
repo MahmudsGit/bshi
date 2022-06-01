@@ -7,6 +7,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form_content">
+                        <h5 class="text-center">চাকুরী আবেদন ফরমঃ
+                            <span class="bg-secondary text-light">@if(isset($candidate)){{ $candidate->Job->job_name }} @endif</span>
+                        </h5><br>
                         <ul>
                             <!-- 1.1 -->
                             <li class="form_item">
@@ -441,7 +444,7 @@
                                     <input readonly type="text" name="reg_number" id="reg_number" value="@if($candidate) {{ $candidate->reg_number }} @endif">
                                     <span class="text-danger error-text reg_number_error"></span>
                                     <label for="reg_date"> তারিখ:</label>
-                                    <input readonly type="text" name="reg_date" id="reg_date" placeholder="YYYY/MM/DD" value="@if($candidate) {{ $candidate->reg_number }} @endif">
+                                    <input readonly type="text" name="reg_date" id="reg_date" placeholder="YYYY/MM/DD" value="@if($candidate) {{ $candidate->reg_date }} @endif">
                                     <span class="text-danger error-text reg_date_error"></span>
                                 </div>
                             </li>
