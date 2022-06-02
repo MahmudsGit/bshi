@@ -5,18 +5,24 @@
             <div class="nk-content-inner">
                 <div class="nk-content-body">
                     <div class="components-preview wide-md mx-auto">
-                        <div class="nk-block-head nk-block-head-lg wide-sm">
-                            <div class="nk-block-head-content">
-                                <div class="nk-block-head-sub"><a class="back-to" href=""><em class="icon ni ni-arrow-left"></em><span>Components</span></a></div>
-                                <h2 class="nk-block-title fw-normal">Candidate who? Have Applied</h2>
-                                <div class="nk-block-des">
-                                    <p class="lead">Using , add advanced interaction controls to your HTML tables. It is a highly flexible tool and all advanced features allow you to display table instantly and nice way.</p>
+                        <div class="nk-block-head nk-block-head-sm">
+                            <div class="nk-block-between">
+                                <div class="nk-block-head-content">
+                                    <div class="nk-block-head-sub"><a class="back-to" href="{{ route('dashboard') }}"><em class="icon ni ni-arrow-left"></em><span>Back to DashBoard</span></a></div>
+                                    <h3 class="nk-block-title fw-normal">Candidate who? Have Applied ! </h3>
+                                    <div class="nk-block-des">
+                                        <p class="lead">All Applied Candidate list. (Paid Candidates can Participate on Examination)</p>
+                                    </div>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="back-to btn btn-outline-secondary" href="{{ route('dashboard') }}"><em class="icon ni ni-arrow-left"></em><span>Back to DashBoard</span></a>
                                 </div>
                             </div>
                         </div><!-- .nk-block-head -->
                         <div class="nk-block nk-block-lg">
                             <div class="card card-preview">
                                 <div class="card-inner">
+                                    @if(count($candidates) > 0)
                                     <table class="datatable-init-export nowrap table" data-export-title="Export">
                                         <thead>
                                         <tr>
@@ -31,7 +37,6 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if(isset($candidates))
                                             <?php $i = 1 ?>
                                         @foreach($candidates as $candidate)
                                         <tr>
@@ -63,9 +68,11 @@
                                             </td>
                                         </tr>
                                         @endforeach
-                                        @endif
                                         </tbody>
                                     </table>
+                                    @else
+                                        <h3 class="text-center text-danger">Currently Non of Candidate is Applied</h3>
+                                    @endif
                                 </div>
                             </div><!-- .card-preview -->
                         </div> <!-- nk-block -->

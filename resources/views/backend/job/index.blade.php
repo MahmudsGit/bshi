@@ -13,10 +13,14 @@
                                         <p>You have total {{ count($jobs) }} Job Post.</p>
                                     </div>
                                 </div><!-- .nk-block-head-content -->
-                                <a href="{{ route('job.create') }}" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Create Job</span></a>
+                                <div class="pull-right">
+                                    <a class="back-to btn btn-outline-secondary" href="{{ route('dashboard') }}"><em class="icon ni ni-arrow-left"></em><span>Back to DashBoard</span></a>
+                                    <a href="{{ route('job.create') }}" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Create Job</span></a>
+                                </div>
                             </div><!-- .nk-block-between -->
                         </div><!-- .nk-block-head -->
                         <div class="nk-block nk-block-lg">
+                            @if(count($jobs) > 0)
                             <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
                                 <thead>
                                 <tr class="nk-tb-item nk-tb-head">
@@ -104,6 +108,9 @@
                                 @endforeach
                                 </tbody>
                             </table><!-- .nk-tb-list -->
+                            @else
+                                <h3 class="text-center text-danger">Currently Non of Job is Created !</h3>
+                            @endif
                         </div> <!-- nk-block -->
                     </div><!-- .components-preview -->
                 </div>

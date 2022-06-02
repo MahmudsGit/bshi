@@ -3,9 +3,24 @@
     <div class="nk-content ">
         <div class="container-fluid">
             <div class="nk-content-inner">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Job Descriptions</h3>
+                            <div class="nk-block-des text-soft">
+                                <p>You have total {{ count($jobs) }} Job Post.</p>
+                            </div>
+                        </div><!-- .nk-block-head-content -->
+                        <div class="pull-right">
+                            <a class="back-to btn btn-outline-secondary" href="{{ route('dashboard') }}"><em class="icon ni ni-arrow-left"></em><span>Back to DashBoard</span></a>
+                            <a href="{{ route('job.index') }}" class="btn btn-info "><em class="icon ni ni-list"></em><span>All Jobs</span></a>
+                            <a href="{{ route('job.create') }}" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Create Job</span></a>
+                        </div>
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    @if(count($jobs) > 0)
                     <div class="row g-gs">
-                        @if(isset($jobs))
                         @foreach($jobs as $job)
                         <div class="col-xxl-3 col-sm-6">
                             <a href="{{ route('description.view',$job->id) }}">
@@ -35,8 +50,10 @@
                             </a>
                         </div><!-- .col -->
                         @endforeach
-                        @endif
                     </div><!-- .row -->
+                    @else
+                        <h3 class="text-center text-danger">Currently Non of Job Description is Created !</h3>
+                    @endif
                 </div><!-- .nk-block -->
             </div>
         </div>

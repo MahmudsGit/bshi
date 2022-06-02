@@ -18,7 +18,7 @@ class CreateCandidatesTable extends Migration
             $table->string('full_name_bangla');
             $table->string('full_name_english');
             $table->string('position_name');
-            $table->string('job_id')->references('id')->on('jobs');
+            $table->string('job_id')->references('id')->on('jobs')->cascadeOnDelete();
             $table->string('clo_name_bangla');
             $table->string('clo_name_english');
             $table->string('mother_name_bangla');

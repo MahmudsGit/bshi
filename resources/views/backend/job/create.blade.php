@@ -18,7 +18,10 @@
                                         {{ session('alert-green') }}
                                     </a>
                                 @endif
-                                <a href="{{ route('job.index') }}" class="btn btn-primary"><em class="icon ni ni-list"></em><span>All Jobs</span></a>
+                                <div class="pull-right">
+                                    <a class="back-to btn btn-outline-secondary" href="{{ route('dashboard') }}"><em class="icon ni ni-arrow-left"></em><span>Back to DashBoard</span></a>
+                                    <a href="{{ route('job.index') }}" class="btn btn-primary"><em class="icon ni ni-list"></em><span>All Jobs</span></a>
+                                </div>
                             </div><!-- .nk-block-between -->
                         </div><!-- .nk-block-head -->
                         <div class="nk-block nk-block-lg">

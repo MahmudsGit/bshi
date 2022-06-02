@@ -33,7 +33,7 @@ Route::post('admitcard/download', [\App\Http\Controllers\FrontEnd\UserLoginContr
 
 // Admin Start
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/dashboard', function () {return view('BackEnd.dashboard');})->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\BackEnd\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('job','\App\Http\Controllers\BackEnd\job\JobController');
     Route::resource('description','\App\Http\Controllers\BackEnd\job\DescriptionController');
     Route::resource('description','\App\Http\Controllers\BackEnd\job\DescriptionController');

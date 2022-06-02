@@ -11,30 +11,20 @@
                         <div class="nk-block-head nk-block-head-sm">
                             <div class="nk-block-between">
                                 <div class="nk-block-head-content">
-                                    <h3 class="nk-block-title page-title">{{ $job->job_name }} All Description</h3>
+                                    <h3 class="nk-block-title page-title">Description @if($job) of {{ $job->job_name }} @endif </h3>
                                     <div class="nk-block-des text-soft">
                                         <p>Please Write Job Description Below and Select Jobs to assign Job Description.</p>
                                     </div>
                                 </div><!-- .nk-block-head-content -->
+                                <div class="pull-right">
+                                    <a class="back-to btn btn-outline-secondary" href="{{ route('dashboard') }}"><em class="icon ni ni-arrow-left"></em><span>Back to DashBoard</span></a>
+                                    <a href="{{ route('description.index') }}" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" ><em class="d-none d-sm-inline icon ni ni-list"></em><span>All Description</span></a>
+                                </div>
                                 @if(session('alert-green'))
                                     <a class="alert alert-success mt-3 text-center">
                                         {{ session('alert-green') }}
                                     </a>
                                 @endif
-                                <div class="nk-block-head-content">
-                                    <div class="toggle-wrap nk-block-tools-toggle">
-                                        <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
-                                        <div class="toggle-expand-content" data-content="pageMenu">
-                                            <ul class="nk-block-tools g-3">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="{{ route('job.index') }}" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" ><em class="d-none d-sm-inline icon ni ni-list"></em><span>All Jobs</span></em></a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .toggle-wrap -->
-                                </div><!-- .nk-block-head-content -->
                             </div><!-- .nk-block-between -->
                         </div><!-- .nk-block-head -->
 

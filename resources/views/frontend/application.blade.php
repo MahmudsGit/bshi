@@ -7,16 +7,16 @@
     <div class="container">
         @include('frontend.partials.menu')
 
+        @if(count($jobs) > 0 )
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th scope="col" width="10%">#SERIAL</th>
+                <th scope="col" width="8%">#SERIAL</th>
                 <th scope="col" width="70%">Position name</th>
-                <th scope="col" width="10%">Application</th>
+                <th scope="col" width="12%">Application</th>
             </tr>
             </thead>
             <tbody>
-            @if(isset($jobs))
                 <?php $i = 1 ?>
                 @foreach($jobs as $job)
             <tr>
@@ -27,10 +27,11 @@
                 </td>
             </tr>
                 @endforeach
-            @endif
             </tbody>
         </table>
-
+        @else
+            <h3 class="text-center text-danger">Currently No Job Available</h3>
+        @endif
     </div>
 @endsection
 

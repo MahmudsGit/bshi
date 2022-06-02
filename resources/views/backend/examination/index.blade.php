@@ -18,7 +18,10 @@
                                         {{ session('alert-green') }}
                                     </a>
                                 @endif
-                                <a href="{{ route('job.index') }}" class="btn btn-primary"><em class="icon ni ni-list"></em><span>All Jobs</span></a>
+                                <div class="pull-right">
+                                    <a class="back-to btn btn-outline-secondary" href="{{ route('dashboard') }}"><em class="icon ni ni-arrow-left"></em><span>Back to DashBoard</span></a>
+                                    <a href="{{ route('job.index') }}" class="btn btn-primary"><em class="icon ni ni-list"></em><span>All Jobs</span></a>
+                                </div>
                             </div><!-- .nk-block-between -->
                         </div><!-- .nk-block-head -->
                         <div class="nk-block nk-block-lg">
@@ -71,7 +74,7 @@
                                     </table>
                                 </form>
                                 <div class="card-inner">
-
+                                    @if(count($examinations) > 0)
                                     <table class="table table-tranx">
                                         <thead>
                                             <tr class="tb-tnx-head">
@@ -124,6 +127,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    @else
+                                        <h3 class="text-center text-danger">Currently Non of Exam Date is Assigned !</h3>
+                                    @endif
                                 </div>
                             </div><!-- card -->
                         </div><!-- .nk-block -->
