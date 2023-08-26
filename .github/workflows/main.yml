@@ -10,19 +10,13 @@ jobs:
     steps:
       - name: Get the latest code
         uses: actions/checkout@v2.3.2
-      - uses: actions/setup-node@master
-      - name: View Clear
-        run: php artisan view:clear
-        
+      - uses: actions/setup-node@master        
       - name: route Clear
-        run: php artisan route:clear
-        
+        run: php artisan route:clear        
       - name: cache Clear
-        run: php artisan cache:clear
-        
+        run: php artisan cache:clear        
       - name: cache config
-        run: php artisan config:cache
-        
+        run: php artisan config:cache        
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
